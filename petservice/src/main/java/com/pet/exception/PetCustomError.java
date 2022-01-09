@@ -8,9 +8,7 @@ public class PetCustomError {
 
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YYYY-MM-dd hh:mm:ss")
 	private LocalDateTime localDateTime;
-
 	private String message;
-
 	private String details;
 
 	public PetCustomError() {

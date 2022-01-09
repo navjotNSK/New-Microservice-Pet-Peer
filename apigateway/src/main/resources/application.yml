@@ -17,18 +17,18 @@ spring:
             uri: http://localhost:9090/
             predicates:
             - Path=/producer/**
-            filters:
-             - name: CircuitBreaker
-               args:
-                 name: producer-app-name
-                 fallbackuri : forward:/producerServiceFallBack
+           # filters:
+            # - name: CircuitBreaker
+             #  args:
+              #   name: producer-app-name
+               #  fallbackuri : forward:/producerServiceFallBack
           - id: peerconsumerModule
             uri: http://localhost:9091/
             predicates:
             - Path=/consumer/**
-            filters:
-             - name: CircuitBreaker
-               args:
-                 name: consumer-app-name
-                 fallbackuri : forward:/consumerServiceFallBack
+           # filters:
+            # - name: CircuitBreaker
+             #  args:
+              #   name: consumer-app-name
+               #  fallbackuri : forward:/consumerServiceFallBack
             

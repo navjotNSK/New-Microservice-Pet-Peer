@@ -82,14 +82,8 @@ public class PeerDaoImpl implements PeerDao {
 		}
 	}
 
-	/*
-	 * @Override public Peer findByPeerName(String username) { return
-	 * peerRepository.findByName(username); }
-	 */
-
 	@Override
 	public ResponseEntity<String> buyPet(long userId, long petId) throws PeerException{
-		ResponseEntity<String> status = null;
 		Optional<Peer> optionalPeer = peerRepository.findById(userId);
 		Optional<Pet> optionalPet = petFeignClient.getPetById(petId);
 		if (optionalPeer.isPresent() && optionalPet.get().getOwner()==0) {
@@ -110,16 +104,4 @@ public class PeerDaoImpl implements PeerDao {
 			throw new PeerException("Invalid user id : "+userId);
 		}
 	}
-
-	/*
-	 * @Override public List<Pet> getMyPets(long userId) { return
-	 * petRepository.findByUserId(userId); }
-	 */
-
-	/*
-	 * @Override public Peer getUserById(long userId) { Peer peer = null;
-	 * Optional<Peer> optionalUser = peerRepository.findById(userId);
-	 * 
-	 * if (optionalUser.isPresent()) { peer = optionalUser.get(); } return peer; }
-	 */
 }

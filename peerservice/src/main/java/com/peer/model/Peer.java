@@ -9,7 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "Peer_Table")
 public class Peer implements Serializable{
@@ -21,9 +25,11 @@ public class Peer implements Serializable{
 	@Column(name = "Peer_Id")
 	private long id;
 
+	@NotEmpty(message = "User name can't be null")
 	@Column(name = "User_Name")
 	private String userName;
 
+	@NotEmpty(message = "Password can't be null")
 	@Column(name = "Password")
 	private String password;
 

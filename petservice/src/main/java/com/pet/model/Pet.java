@@ -8,7 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "Pet_Table")
 public class Pet implements Serializable{
@@ -20,12 +26,16 @@ public class Pet implements Serializable{
 	@Column(name = "Pet_Id")
 	private long id;
 
+	@NotEmpty(message = "Pet name can't be null")
 	@Column(name = "Pet_Name")
 	private String name;
 	
+	@Min(value = 1, message = "Age should not be less than 1")
+    @Max(value = 15, message = "Age should not be greater than 15")
 	@Column(name = "Pet_Age")
 	private int age;
 
+	@NotEmpty(message = "Pet location can't be null")
 	@Column(name = "Pet_Place")
 	private String place;
 

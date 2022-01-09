@@ -52,17 +52,6 @@ public class PeerServiceImpl implements PeerService {
 		}
 	}
 
-	/*
-	 * @Override public Peer getPeerById(long userId) { Peer dummyPeer = null; if
-	 * (userId > 0) { dummyPeer = peerDao.getUserById(userId); } return dummyPeer; }
-	 */
-
-	/*
-	 * @Override public Peer findByUserName(String username) { Peer peer = null; if
-	 * (username != null) { peer = peerDao.findByPeerName(username); } return peer;
-	 * }
-	 */
-
 	@Override
 	public String removePeer(long userId) throws PeerException {
 		String status = null;

@@ -2,7 +2,8 @@ package com.peer.exception;
 
 import java.time.LocalDateTime;
 
-import org.hibernate.exception.ConstraintViolationException;
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -16,10 +16,6 @@ public interface PeerService {
 
 	public abstract List<Peer> listPeers() throws PeerException;
 
-	//public abstract Peer getPeerById(long userId);
-	
-	//public abstract Peer findByUserName(String username);
-
 	public abstract String removePeer(long userId) throws PeerException;
 
 	public abstract ResponseEntity<List<Pet>> authenticatePeer(String userName, String password) throws PeerException;

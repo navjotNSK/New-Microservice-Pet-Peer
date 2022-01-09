@@ -3,6 +3,8 @@ package com.peer.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,11 +36,13 @@ public class PeerController {
 
 	// USER REGISTRATION
 	@PostMapping(value = "/user/add", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> addPeer(@RequestBody Peer peer) throws PeerException {
+	public ResponseEntity<String> addPeer(@Valid @RequestBody Peer peer) throws PeerException {
 		LOGGER.info("Client Requseted to add a user");
+		ResponseEntity<String> responseEntity = null;
 		String status = peerService.addPeer(peer);
-		ResponseEntity<String> responseEntity = new ResponseEntity<String>(status, HttpStatus.CREATED);
-		return responseEntity;
+		if (status != null) {
+			responseEntity = new ResponseEntity<String>(status, HttpStatus.CREATED);
+		}return responseEntity;
 	}
 
 	// USER LOGIN

@@ -3,6 +3,8 @@ package com.pet.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +35,7 @@ public class PetController {
 
 	// ADD A PET
 	@PostMapping(value = "/pets/addPet", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> addPet(@RequestBody Pet pet) throws PetException {
+	public ResponseEntity<String> addPet(@Valid @RequestBody Pet pet) throws PetException {
 		LOGGER.info("Client Requseted to addPet");
 		ResponseEntity<String> responseEntity = null;
 		String status;
